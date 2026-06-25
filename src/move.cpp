@@ -309,12 +309,12 @@ uint32_t move_pc(dungeon_t *d, uint32_t dir)
   case 9:
     next[dim_x]++;
     break;
-//  case '<':
-//    if (mappair(character_get_pos(d->PC)) == ter_stairs_up) {
-//      was_stairs = 1;
-//      new_dungeon_level(d, '<');
-//    }
-//    break;
+ case '<':
+   if (mappair(character_get_pos(d->PC)) == ter_stairs_up) {
+     was_stairs = 1;
+     new_dungeon_level(d, '<');
+   }
+   break;
   case '>':
     if (mappair(character_get_pos(d->PC)) == ter_stairs_down) {
       was_stairs = 1;
