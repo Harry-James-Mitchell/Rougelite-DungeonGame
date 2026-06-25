@@ -1254,14 +1254,13 @@ void io_handle_input(dungeon_t *d, character *c)
     case '>':
       fail_code = move_pc(d, '>');
       break;
-//    case '<':
-//      fail_code = move_pc(d, '<');
-//      break;
+   case '<':
+     fail_code = move_pc(d, '<');
+     break;
     case 'Q':
       d->quit = 1;
       fail_code = 0;
       break;
-#if 0
     case 'T':
       /* New command.  Display the distances for tunnelers.             */
       io_display_tunnel(d);
@@ -1283,7 +1282,6 @@ void io_handle_input(dungeon_t *d, character *c)
       io_display(d);
       fail_code = 1;
       break;
-#endif
     case 'L':
       io_look_mode(d);
       fail_code = 1;
