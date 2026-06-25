@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
   char *load_file;
   char *pgm_file;
 
-  memset(&d, 0, sizeof (d));
+  d = dungeon_t{};
 
   /* Default behavior: Seed with the time, generate a new dungeon, *
    * and don't write to disk.                                      */
