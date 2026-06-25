@@ -206,7 +206,7 @@ void do_moves(dungeon_t *d)
      * and recreated every time we leave and re-enter this function.    */
     e->c = NULL;
     event_delete(e);
-    io_handle_input(d);
+    io_handle_input(d, c);
   }
 }
 

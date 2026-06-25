@@ -656,12 +656,12 @@ static void io_list_monsters_display(dungeon_t *d,
   char (*s)[40]; /* pointer to array of 40 char */
   (void) adjectives;
 
-  s = (char (*)[40]) malloc(count * sizeof (*s));
+  s = (char (*)[40]) malloc(count * sizeof(*s));
 
   mvprintw(3, 19, " %-40s ", "");
   /* Borrow the first element of our array for this string: */
   snprintf(s[0], 40, "You know of %d monsters:", count);
-  mvprintw(4, 19, " %-40s ", s);
+  mvprintw(4, 19, " %-40s ", *s);
   mvprintw(5, 19, " %-40s ", "");
 
   for (i = 0; i < count; i++) {
@@ -986,12 +986,12 @@ static uint32_t io_display_obj_info(object *o)
   }
 
   for (i = 0; i < n + 4; i++) {
-    mvprintw(i, 0, s);
+    mvprintw(i, 0, "%s", s);
   }
 
   io_object_to_string(o, s, 80);
-  mvprintw(1, 0, s);
-  mvprintw(3, 0, o->get_description());
+  mvprintw(1, 0, "%s", s);
+  mvprintw(3, 0, "%s", o->get_description());
 
   mvprintw(n + 5, 0, "Hit any key to continue.");
 
@@ -1186,7 +1186,7 @@ void io_show_pc_stuff(dungeon_t *d){
     io_display(d);
 }
 
-void io_handle_input(dungeon_t *d)
+void io_handle_input(dungeon_t *d, character *c)
 {
   uint32_t fail_code;
   int key;
